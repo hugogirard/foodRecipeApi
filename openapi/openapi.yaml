@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: Food Recipes API
+  version: 1.0.0
+paths:
+  /recipes:
+    get:
+      summary: Get all recipes
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      format: int32
+                    name:
+                      type: string
+  /recipes/{recipeId}:
+    get:
+      summary: Get a recipe by ID
+      parameters:
+        - name: recipeId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:                  
+                    id:
+                      type: integer
+                      format: int32
+                    name:
+                      type: string
+                    ingredients:
+                      type: array
